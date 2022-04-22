@@ -1,0 +1,25 @@
+{
+  "name": "notification-service",
+  "version": "1.0.0",
+  "description": "Coding Assignment of Stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akash-pateliya/Notification-Service.git"
+  },
+  "author": "Akash Pateliya (akash.pateliya@outlook.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akash-pateliya/Notification-Service/issues"
+  },
+  "homepage": "https://github.com/akash-pateliya/Notification-Service#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.3.1"
+  }
+}
