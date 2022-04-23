@@ -41,7 +41,7 @@ class mediumBLL {
 
     async getMediumByUid(uuid) {
         try {
-            const result = await Medium.find({ 'uid': uuid });
+            const result = await Medium.findOne({ uid: uuid });
             return {
                 status : true,
                 result : result
