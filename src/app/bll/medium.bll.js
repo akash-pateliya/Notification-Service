@@ -1,5 +1,6 @@
 const Medium = require('../models/medium.model.js');
 const { v4: uuid } = require('uuid');
+const errorLogBLL = require('./error-log.bll.js');
 
 class mediumBLL {
 
@@ -13,9 +14,11 @@ class mediumBLL {
                 updatedAt: null,
                 deletedAt: null
             });
+            
             const result = await medium.save();
             return result;
         } catch (error) {
+            await new errorLogBLL().logError('mediumBLL', 'insertMedium', error);
             throw new Error(`Method : insertMedium, Class : mediumBLL, Error : ${error}`);
         }
     }

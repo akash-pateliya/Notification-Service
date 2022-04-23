@@ -1,5 +1,6 @@
 const eModel = {
-    LibMedium : 'lib-medium'
+    LibMedium : 'lib-medium',
+    ErrorLog : 'error-log'
 }
 Object.freeze(eModel);
 module.exports = eModel;
