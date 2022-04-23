@@ -8,15 +8,15 @@ class subscribeUserBLL {
     async subscribeUser(subscribeUserObject) {
         try {
             let errorArray = [];
-            if(!this.validateEmail(subscribeUserObject.email)){
+            if(!await this.validateEmail(subscribeUserObject.email)){
                 errorArray.push('Incorrect Email');
             }
 
-            if (!this.validateMobileNumber(subscribeUserObject.primary_mobile)) {
+            if (!await this.validateMobileNumber(subscribeUserObject.primary_mobile)) {
                 errorArray.push('Incorrect Primary Number');
             }
             
-            if (subscribeUserObject?.secondary_mobile && !this.validateMobileNumber(subscribeUserObject.secondary_mobile)) {
+            if (subscribeUserObject?.secondary_mobile && !await this.validateMobileNumber(subscribeUserObject.secondary_mobile)) {
                 errorArray.push('Incorrect Secondary Number');
             }
             
@@ -83,7 +83,7 @@ class subscribeUserBLL {
         }
     }
 
-    validateEmail(email){
+    async validateEmail(email){
         try {
             const mail = /\S+@\S+\.\S+/;
             return mail.test(email);
@@ -93,7 +93,7 @@ class subscribeUserBLL {
         }
     }
 
-    validateMobileNumber(mobileNumberStr){
+    async validateMobileNumber(mobileNumberStr){
         try {
             const mobile = /^\d{10}$/;
             return mobile.test(mobileNumberStr);
