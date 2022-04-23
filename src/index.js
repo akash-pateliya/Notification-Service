@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dbConfig = require('./config/mongo.db');
+const eSuccessMessage = require('./app/enum/success-message.enum'); 
+const eErrorMessage = require('./app/enum/error-message.enum');
 require('dotenv').config()
 
 // create express app
@@ -17,9 +19,9 @@ mongoose.connect(dbConfig.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    console.log("Successfully connected to the MongoDB");
+    console.log(eSuccessMessage.DbSuccessMessage);
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    console.log(eErrorMessage.DbErrorMessage, err);
     process.exit();
 });
 
