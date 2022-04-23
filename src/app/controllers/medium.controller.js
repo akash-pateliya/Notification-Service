@@ -10,8 +10,42 @@ exports.create = async (req, res) => {
             });
         }
         const result = await new mediumBLL().insertMedium(req.body);
-        res.status(StatusCodes.OK).send(result);
+        if (result.status) {
+            res.status(StatusCodes.OK).send(result);
+        }
+        else{
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(result);
+        }
     } catch (error) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
     }
 };
+
+exports.findAll = async(req, res) => {
+    try {
+        const result = await new mediumBLL().getAllMedium();
+        if (result.status) {
+            res.status(StatusCodes.OK).send(result);
+        }
+        else{
+            res.status(StatusCodes.NOT_FOUND).send(result);
+        }
+        
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
+    }
+}
+
+exports.findOne = async(req, res) => {
+    try {
+        const result = await new mediumBLL().getMediumByUid(req.params.uid);
+    if (result.status) {
+        res.status(StatusCodes.OK).send(result);
+    }
+    else{
+        res.status(StatusCodes.NOT_FOUND).send(result);
+    }
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
+    }
+}
