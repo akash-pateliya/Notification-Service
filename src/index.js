@@ -29,7 +29,7 @@ mongoose.connect(dbConfig.url, {
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to Notification Service. Send and schedule notification quickly."});
 });
-// require('./app/routes/medium.routes.js')(app);
+require('./app/routes/medium.routes.js')(app);
 // listen for requests
 app.listen(process.env.NODE_PORT, () => {
     console.log("Server is listening on port ",process.env.NODE_PORT);
