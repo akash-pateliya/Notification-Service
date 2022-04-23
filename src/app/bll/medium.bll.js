@@ -9,7 +9,7 @@ class mediumBLL {
             const medium = new Medium({
                 uid: uuid(),
                 medium_name: mediumObject.medium_name,
-                isDeleted: true,
+                isDeleted: false,
                 createdAt: new Date(),
                 updatedAt: null,
                 deletedAt: null
@@ -22,7 +22,10 @@ class mediumBLL {
             };
         } catch (error) {
             await new errorLogBLL().logError('mediumBLL', 'insertMedium', error);
-            throw new Error(`Method : insertMedium, Class : mediumBLL, Error : ${error}`);
+            return {
+                status : false,
+                error : error.message
+            }
         }
     }
 
@@ -35,7 +38,10 @@ class mediumBLL {
             };
         } catch (error) {
             await new errorLogBLL().logError('mediumBLL', 'getAllMedium', error);
-            throw new Error(`Method : getAllMedium, Class : mediumBLL, Error : ${error}`);
+            return {
+                status : false,
+                error : error.message
+            }
         }
     }
 
@@ -48,7 +54,10 @@ class mediumBLL {
             };
         } catch (error) {
             await new errorLogBLL().logError('mediumBLL', 'getMediumByUid', error);
-            throw new Error(`Method : getMediumByUid, Class : mediumBLL, Error : ${error}`);
+            return {
+                status : false,
+                error : error.message
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ class errorLogBLL {
             });
             await error.save();
         } catch (error) {
-            throw new Error(`Method : logError, Class : errorLogBLL, Error : ${error}`);
+            throw new Error(`Method : logError, Class : errorLogBLL, Error : ${error.message}`);
         }
     }
 }

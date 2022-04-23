@@ -17,7 +17,8 @@ mongoose.Promise = global.Promise;
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 }).then(() => {
     console.log(eSuccessMessage.DbSuccessMessage);
 }).catch(err => {
@@ -29,7 +30,10 @@ mongoose.connect(dbConfig.url, {
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to Notification Service. Send and schedule notification quickly."});
 });
+
 require('./app/routes/medium.routes.js')(app);
+require('./app/routes/subscribe-user.routes')(app);
+
 // listen for requests
 app.listen(process.env.NODE_PORT, () => {
     console.log("Server is listening on port ",process.env.NODE_PORT);
