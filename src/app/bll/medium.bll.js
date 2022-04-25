@@ -60,6 +60,22 @@ class mediumBLL {
             }
         }
     }
+
+    async getMediumByUids(mediumUidsArr) {
+        try {
+            const result = await Medium.find({ uid: { "$in" : mediumUidsArr} });
+            return {
+                status : true,
+                result : result
+            };
+        } catch (error) {
+            await new errorLogBLL().logError('mediumBLL', 'getMediumByUid', error);
+            return {
+                status : false,
+                error : error.message
+            }
+        }
+    }
 }
 
 module.exports = mediumBLL;

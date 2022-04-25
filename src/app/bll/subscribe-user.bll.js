@@ -73,6 +73,22 @@ class subscribeUserBLL {
         }
     }
 
+    async getAllUsersByUids(usersUidsArr){
+        try {
+            const result = await SubscribeUser.find({ uid: { "$in" : usersUidsArr} });
+            return {
+                status : true,
+                result : result
+            };
+        } catch (error) {
+            await new errorLogBLL().logError('subscribeUserBLL', 'getAllUsers', error);
+            return {
+                status : false,
+                error : error.message
+            }
+        }
+    }
+
     async getUserByEmailAndMobile(email, mobile){
         try {
             const result = await SubscribeUser.find({email:email, primary_mobile: mobile});

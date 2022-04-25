@@ -33,6 +33,7 @@ app.get('/', (req, res) => {
 
 require('./app/routes/medium.routes.js')(app);
 require('./app/routes/subscribe-user.routes')(app);
+require('./app/routes/send-notofication.routes')(app);
 
 // listen for requests
 app.listen(process.env.NODE_PORT, () => {

@@ -21,7 +21,9 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "http-status-codes": "^2.2.0",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^5.7.11",
+    "node-fetch": "^3.2.3",
     "uuid": "^8.3.2"
   }
 }
